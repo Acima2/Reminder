@@ -77,31 +77,31 @@
       <center class="post">
          <!-- vert -->   
          <div class="col-perso">
-         @foreach ($datas as $postit)
+         @foreach ($todo as $postit_green)
             <div class="postit1">
-              <button class="delete"></button>
-              <h3>{{ $postit->titre}}</h3>
-              <p>{{ $postit->contenu}}</p>
+            <a class="delete" href='{{ url("/delete/$postit_green->id")}}'>____</a>
+              <h3>{{ $postit_green->titre}}</h3>
+              <p>{{ $postit_green->contenu}}</p>
             </div>
           @endforeach
          </div>
          <!--  orange  -->
          <div class="col-perso">
-         @foreach ($datas as $postit)
+         @foreach ($important as $postit_important)
             <div class="postit2">
-              <button class="delete"></button>
-              <h3>{{ $postit->titre}}</h3>
-              <p>{{ $postit->contenu}}</p>
+            <a class="delete" href='{{ url("/delete/$postit_important->id")}}'> ____</a>
+            <h3>{{ $postit_important->titre}}</h3>
+            <p>{{ $postit_important->contenu}}</p>
             </div>
           @endforeach
          </div>
          <!-- rouge -->
          <div class="col-perso">
-         @foreach ($datas as $postit)
+         @foreach ($urgent as $postit_urgent)
             <div class="postit3">
-              <button class="delete"></button>
-              <h3>{{ $postit->titre}}</h3>
-              <p>{{ $postit->contenu}}</p>
+            <a class="delete" href='{{ url("/delete/$postit_urgent->id")}}'> ____</a>
+            <h3>{{ $postit_urgent->titre}}</h3>
+            <p>{{ $postit_urgent->contenu}}</p>
             </div>
           @endforeach
          </div>

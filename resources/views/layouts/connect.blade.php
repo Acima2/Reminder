@@ -359,7 +359,7 @@
        		{{ csrf_field() }}
         </form>
         <!-- Poubelle -->
-        <a href="#" class="trash"  type="button"><img src="./img/trash.svg"></a>
+        <a href="/deleteall" class="trash"  type="button"><img src="./img/trash.svg"></a>
         <!-- Barre de recherche -->
         <div class="search">
             <form id="recherche" class="input" method="post" action="{{ route('postit') }}"> {{ csrf_field()}}

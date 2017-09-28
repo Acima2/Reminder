@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,35 +9,26 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Auth::routes();
-
 Route::get('/', 'LinkController@index');
-Route::get('/postit', 'PostItController@displayPostIt')->name('postit');
-
+/* Home route */
 Route::get('/home', [
     'middleware' => 'auth',
     'uses' => 'LinkController@home'
 ])->name('home');
+Route::post('/home','PostItController@addPostIt')->name('home');
+/* Post-it view routing */
+Route::get('/postit', 'PostItController@displayPostIt')->name('postit');
+Route::post('/postit', 'SearchController@searchPostIt')->name('postit');
+/* Delete one post-it */
+Route::get('/delete/{id}', 'PostItController@deletePostIt')->name('deleteOne');
+/* Delete all post-it*/
+Route::get('/deleteall','PostItController@deleteAllPostIt')->name('deleteAll');
+/* User Gestion */
+Route::get('/profil','UserAccountController@displayProfil');
+Route::get('/currentUserDelete', 'UserAccountController@deleteCurrentUser');
 
-Route::post('/home', [
-    'middleware' => 'auth',
-    'uses' => 'PostItController@addPostIt'
-])->name('home');
 
-Route::get('/delete/{id}', [
-	'middleware' => 'auth',
-	'uses' => 'PostItController@deletePostIt'
-]);
-Route::get('/deleteall', [
-	'middleware' => 'auth',
-	'uses' => 'PostItController@deleteAllPostIt'
-	]);
-Route::get('/currentUserDelete', [
-	'middleware' => 'auth',
-	'uses' => 'DeleteUserController@deleteCurrentUser'
-	]);
 Route::get('/404',function(){
 	return abort(404);
 });
